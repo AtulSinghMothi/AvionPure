@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observability Engineer — AvionPure</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .job-page { background: var(--bg2); padding: 100px 24px 80px; min-height: 100vh; }
+    .job-page-inner { max-width: 860px; margin: 0 auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; font-weight: 600; color: var(--cyan);
+      margin-bottom: 36px; transition: gap var(--transition);
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { transform: rotate(180deg); }
+    .job-hero {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 48px; margin-bottom: 28px;
+    }
+    .job-badge-pill {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--grad); color: white;
+      padding: 4px 14px; border-radius: 100px; margin-bottom: 20px;
+    }
+    .job-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.1;
+    }
+    .job-meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+    .job-meta-row span {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; font-weight: 500; color: var(--text2);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 100px;
+    }
+    .job-section-block { margin-bottom: 36px; }
+    .job-section-block h3 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 14px;
+    }
+    .job-section-block p { font-size: 0.95rem; color: var(--text2); line-height: 1.8; }
+    .job-section-block ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .job-section-block ul li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.93rem; color: var(--text2); line-height: 1.65;
+    }
+    .job-section-block ul li::before {
+      content: ''; flex-shrink: 0; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--grad); margin-top: 8px;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-chips span {
+      font-size: 0.75rem; font-weight: 600; color: var(--cyan);
+      background: rgba(0,149,187,0.07); border: 1px solid rgba(0,149,187,0.2);
+      padding: 5px 13px; border-radius: 100px;
+    }
+    .section-divider { height: 1px; background: var(--border); margin: 28px 0; }
+    .apply-cta {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .apply-cta h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 4px;
+    }
+    .apply-cta p { font-size: 0.88rem; color: var(--text2); }
+    .btn-apply-page {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--grad); color: white; font-weight: 700;
+      font-size: 0.95rem; padding: 14px 32px; border-radius: 100px;
+      white-space: nowrap; transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(0,149,187,0.2);
+    }
+    .btn-apply-page:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,149,187,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#logoGrad)"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Avion<span class="logo-accent">Pure</span></span>
+          <span class="logo-tagline">Transforming Innovation</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html#careers" style="color:var(--cyan);">Careers</a></li>
+        <li><a href="../index.html#contact" class="btn-nav">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../index.html#careers">Careers</a>
+      <a href="../index.html#contact">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ======= JOB PAGE ======= -->
+  <div class="job-page">
+    <div class="job-page-inner">
+      <a href="../index.html#careers" class="back-link">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Back to Careers
+      </a>
+
+      <div class="job-hero">
+        <div class="job-badge-pill">Hiring Now</div>
+        <h1>Observability Engineer</h1>
+        <div class="job-meta-row">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Full-time
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.79 2 4 3.79 4 6C4 9.5 8 14 8 14C8 14 12 9.5 12 6C12 3.79 10.21 2 8 2Z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            Remote
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 4V3C5 2.45 5.45 2 6 2H10C10.55 2 11 2.45 11 3V4" stroke="currentColor" stroke-width="1.5"/></svg>
+            Engineering
+          </span>
+        </div>
+
+        <div class="job-section-block">
+          <h3>Overview</h3>
+          <p>As an Observability Engineer at AvionPure, you will own and evolve the observability stack across our client environments. You will deploy, configure, and optimize platforms including Splunk ITSI, Cribl, Dynatrace, and Datadog to deliver real-time visibility into application and infrastructure health, enabling proactive monitoring and rapid incident response.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="job-section-block">
+          <h3>Responsibilities</h3>
+          <ul>
+            <li>Deploy and manage Splunk ITSI, Cribl, Dynatrace, and Datadog environments</li>
+            <li>Design and build KPI schemas, glass tables, and service health dashboards in ITSI</li>
+            <li>Configure Cribl pipelines for log routing, parsing, enrichment, and volume reduction</li>
+            <li>Instrument applications with Datadog APM, distributed tracing, and custom metrics</li>
+            <li>Build Dynatrace dashboards, SLO monitors, and anomaly detection rules</li>
+            <li>Collaborate with clients to define observability strategy and monitoring standards</li>
+            <li>Optimize data ingestion costs through smart routing and filtering (Cribl)</li>
+          </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="job-section-block">
+          <h3>Requirements</h3>
+          <ul>
+            <li>3+ years of experience in observability, monitoring, or platform engineering</li>
+            <li>Hands-on experience with Splunk ITSI (KPIs, services, episode management)</li>
+            <li>Proficiency with Cribl Stream for log routing and transformation</li>
+            <li>Experience deploying and configuring Datadog or Dynatrace at scale</li>
+            <li>Understanding of distributed tracing, metrics, and log correlation (OpenTelemetry)</li>
+            <li>Scripting skills in Python or Bash for automation</li>
+            <li>Strong analytical and troubleshooting skills</li>
+          </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="job-section-block">
+          <h3>Skills</h3>
+          <div class="skill-chips">
+            <span>Splunk ITSI</span><span>Cribl</span><span>Dynatrace</span>
+            <span>Datadog</span><span>OpenTelemetry</span><span>Python</span><span>APM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-cta">
+        <div>
+          <h3>Ready to join AvionPure?</h3>
+          <p>Submit your application and we'll get back to you within 3 business days.</p>
+        </div>
+        <a href="../apply.html?job=observability-engineer" class="btn-apply-page">
+          Apply Now
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <span>&copy; 2026 AvionPure. All rights reserved.</span>
+        <span>Transforming Innovation</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

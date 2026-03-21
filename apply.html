@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — AvionPure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== APPLY PAGE ===== */
+    .apply-page {
+      min-height: 100vh;
+      background: var(--bg2);
+      padding: 120px 24px 80px;
+    }
+    .apply-page-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 28px;
+      transition: gap var(--transition);
+    }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { transform: rotate(180deg); }
+
+    /* Role header */
+    .apply-role-header {
+      margin-bottom: 28px;
+    }
+    .apply-role-header .role-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--grad); color: white;
+      padding: 4px 14px; border-radius: 100px; margin-bottom: 12px;
+    }
+    .apply-role-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--text); line-height: 1.1;
+    }
+
+    /* Application form panel */
+    .apply-form-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.05);
+    }
+    .apply-form-wrap h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .apply-form-wrap > p {
+      font-size: 0.88rem;
+      color: var(--text2);
+      margin-bottom: 28px;
+    }
+    .apply-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+    .apply-form .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text2);
+      letter-spacing: 0.03em;
+    }
+    .apply-form .form-group input,
+    .apply-form .form-group select,
+    .apply-form .form-group textarea {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 11px 15px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .apply-form .form-group input:focus,
+    .apply-form .form-group select:focus,
+    .apply-form .form-group textarea:focus {
+      border-color: rgba(0,149,187,0.4);
+      box-shadow: 0 0 0 3px rgba(0,149,187,0.07);
+      background: var(--bg);
+    }
+    .apply-form .form-group input::placeholder,
+    .apply-form .form-group textarea::placeholder { color: var(--text3); }
+    .apply-form .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .form-row-2 { grid-template-columns: 1fr; } }
+
+    /* File upload */
+    .file-upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 2px dashed rgba(0,149,187,0.3);
+      border-radius: var(--radius-sm);
+      padding: 28px 20px;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition);
+      background: rgba(0,149,187,0.02);
+      text-align: center;
+    }
+    .file-upload-label:hover {
+      border-color: var(--cyan);
+      background: rgba(0,149,187,0.05);
+    }
+    .file-upload-label svg { opacity: 0.5; }
+    .file-upload-label .upload-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+    .file-upload-label .upload-hint {
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+    #resumeFile { display: none; }
+    #fileNameDisplay {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      font-weight: 500;
+      margin-top: 6px;
+      min-height: 18px;
+    }
+
+    /* Submit */
+    .btn-submit-apply {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--grad);
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(0,149,187,0.18);
+    }
+    .btn-submit-apply:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,149,187,0.28);
+    }
+    .apply-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      padding: 40px 20px;
+    }
+    .apply-success.show { display: flex; animation: fadeUp 0.5s ease; }
+    .apply-success h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .apply-success p { color: var(--text2); font-size: 0.92rem; }
+    .success-icon {
+      width: 64px; height: 64px;
+      background: var(--grad);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Not found */
+    .job-not-found {
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .job-not-found h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
+    .job-not-found p { color: var(--text2); margin-bottom: 28px; }
+  </style>
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#logoGrad)"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0095bb"/>
+                <stop offset="1" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Avion<span class="logo-accent">Pure</span></span>
+          <span class="logo-tagline">Transforming Innovation</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#careers">Careers</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="index.html#careers">Careers</a>
+      <a href="index.html#contact">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ======= APPLY PAGE ======= -->
+  <div class="apply-page">
+    <div class="apply-page-inner" id="applyInner">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <span>&copy; 2026 AvionPure. All rights reserved.</span>
+        <span>Transforming Innovation</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== NAVBAR ===== */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    /* ===== JOB LOOKUP (title + badge only — full descriptions live in job-*.html) ===== */
+    const JOBS = {
+      'sre-engineer':            { title: 'SRE Engineer',            badge: 'Open' },
+      'siem-architect':          { title: 'SIEM Architect',          badge: 'Open' },
+      'observability-engineer':  { title: 'Observability Engineer',  badge: 'Hiring Now' },
+      'security-engineer':       { title: 'Security Engineer',       badge: 'Open' },
+    };
+
+    /* ===== RENDER JOB ===== */
+    const params = new URLSearchParams(window.location.search);
+    const jobKey = params.get('job');
+    const job = JOBS[jobKey];
+    const container = document.getElementById('applyInner');
+
+    /* Map job key → job detail page */
+    const JOB_PAGES = {
+      'sre-engineer': 'jobs/job-sre-engineer.html',
+      'siem-architect': 'jobs/job-siem-architect.html',
+      'observability-engineer': 'jobs/job-observability-engineer.html',
+      'security-engineer': 'jobs/job-security-engineer.html',
+    };
+
+    if (!job) {
+      container.innerHTML = `
+        <div class="job-not-found">
+          <h2>Position Not Found</h2>
+          <p>The job you're looking for doesn't exist or may have been filled. Browse our open positions below.</p>
+          <a href="index.html#careers" class="btn-primary">View Open Positions</a>
+        </div>`;
+    } else {
+      document.title = `Apply — ${job.title} | AvionPure`;
+      const backHref = JOB_PAGES[jobKey] || 'index.html#careers';
+
+      container.innerHTML = `
+        <a href="${backHref}" class="back-link">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Back to Job Description
+        </a>
+
+        <div class="apply-role-header">
+          <div class="role-tag">${job.badge}</div>
+          <h1>Apply — ${job.title}</h1>
+        </div>
+
+        <div class="apply-form-wrap">
+          <h2>Application Form</h2>
+          <p>Fill in your details below and attach your resume. We'll get back to you within 3 business days.</p>
+
+          <form class="apply-form" id="applyForm" novalidate>
+            <input type="hidden" name="position" value="${job.title}" />
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="applyEmail">Email Address *</label>
+              <input type="email" id="applyEmail" name="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="applyPhone">Phone Number</label>
+              <input type="tel" id="applyPhone" name="phone" placeholder="+1 (555) 000-0000" />
+            </div>
+
+            <div class="form-group">
+              <label for="linkedin">LinkedIn Profile</label>
+              <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/in/yourname" />
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Years of Relevant Experience *</label>
+              <select id="experience" name="experience" required>
+                <option value="">Select…</option>
+                <option>Less than 1 year</option>
+                <option>1–2 years</option>
+                <option>3–5 years</option>
+                <option>6–9 years</option>
+                <option>10+ years</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="coverLetter">Cover Letter / Additional Notes</label>
+              <textarea id="coverLetter" name="coverLetter" placeholder="Tell us why you're a great fit for this role…"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Resume / CV *</label>
+              <label for="resumeFile" class="file-upload-label" id="uploadLabel">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M16 22V10M16 10L11 15M16 10L21 15" stroke="url(#upGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="4" y="24" width="24" height="4" rx="2" fill="url(#upGrad)" opacity="0.15"/>
+                  <defs>
+                    <linearGradient id="upGrad" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span class="upload-text">Click to upload your resume</span>
+                <span class="upload-hint">PDF, DOC, or DOCX — max 5 MB</span>
+              </label>
+              <input type="file" id="resumeFile" name="resume" accept=".pdf,.doc,.docx" required />
+              <div id="fileNameDisplay"></div>
+            </div>
+
+            <button type="submit" class="btn-submit-apply">
+              Submit Application
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </form>
+
+          <div class="apply-success" id="applySuccess">
+            <div class="success-icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M7 15L13 21L23 9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Application Submitted!</h3>
+            <p>Thank you for applying for <strong>${job.title}</strong>. Our team will review your application and reach out within 3 business days.</p>
+            <a href="index.html#careers" class="btn-primary" style="margin-top:8px;">View Other Positions</a>
+          </div>
+        </div>
+      `;
+
+      /* File name display */
+      document.getElementById('resumeFile').addEventListener('change', function () {
+        const display = document.getElementById('fileNameDisplay');
+        if (this.files.length > 0) {
+          display.textContent = '✓ ' + this.files[0].name;
+        } else {
+          display.textContent = '';
+        }
+      });
+
+      /* Form submit */
+      document.getElementById('applyForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const firstName = this.querySelector('#firstName').value.trim();
+        const email    = this.querySelector('#applyEmail').value.trim();
+        const resume   = this.querySelector('#resumeFile').files.length > 0;
+
+        if (!firstName || !email || !resume) {
+          const btn = this.querySelector('.btn-submit-apply');
+          btn.style.animation = 'shake 0.4s ease';
+          btn.addEventListener('animationend', () => { btn.style.animation = ''; }, { once: true });
+          return;
+        }
+
+        const btn = this.querySelector('.btn-submit-apply');
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        setTimeout(() => {
+          this.style.display = 'none';
+          document.getElementById('applySuccess').classList.add('show');
+        }, 1200);
+      });
+    }
+
+    /* Shake animation */
+    const s = document.createElement('style');
+    s.textContent = `
+      @keyframes shake {
+        0%,100% { transform: translateX(0); }
+        20% { transform: translateX(-8px); }
+        40% { transform: translateX(8px); }
+        60% { transform: translateX(-5px); }
+        80% { transform: translateX(5px); }
+      }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(s);
+  </script>
+</body>
+</html>

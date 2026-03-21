@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — AvionPure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ======= NAV ======= -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#logoGrad)"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0095bb"/>
+                <stop offset="1" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Avion<span class="logo-accent">Pure</span></span>
+          <span class="logo-tagline">Transforming Innovation</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services.html" style="color:var(--cyan);">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#careers">Careers</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="index.html#careers">Careers</a>
+      <a href="index.html#contact">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ======= PAGE HEADER ======= -->
+  <div style="background:var(--bg2); padding: 100px 24px 0; text-align:center;">
+    <div class="container">
+      <div class="section-tag" style="margin-bottom:14px;">What We Do</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:800; margin-bottom:16px;">
+        Our <span class="gradient-text">Services</span>
+      </h2>
+      <p style="color:var(--text2); font-size:1.1rem; max-width:520px; margin:0 auto 0;">
+        Comprehensive IT solutions engineered for the modern enterprise
+      </p>
+    </div>
+  </div>
+
+  <!-- ======= SERVICES ======= -->
+  <section id="services" style="background:var(--bg2);">
+    <div class="container">
+      <div class="services-grid">
+
+        <div class="service-card" data-index="0">
+          <div class="card-glow"></div>
+          <div class="service-icon">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+              <path d="M20 4L36 12V20C36 28.84 29.08 37.12 20 40C10.92 37.12 4 28.84 4 20V12L20 4Z" stroke="url(#s1)" stroke-width="2" fill="none"/>
+              <path d="M14 20L18 24L26 16" stroke="url(#s1)" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="s1" x1="4" y1="4" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>Security &amp; Observability</h3>
+          <p>End-to-end security operations with cutting-edge SIEM platforms — Splunk ES, Azure Sentinel, and full-stack observability via Splunk ITSI, Cribl, Dynatrace, and Datadog.</p>
+          <ul class="service-tags">
+            <li>SIEM</li><li>ITSI</li><li>Datadog</li><li>Cribl</li>
+          </ul>
+        </div>
+
+        <div class="service-card featured" data-index="1">
+          <div class="card-glow"></div>
+          <div class="featured-badge">Popular</div>
+          <div class="service-icon">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="16" width="32" height="20" rx="3" stroke="url(#s2)" stroke-width="2" fill="none"/>
+              <path d="M12 16V12C12 7.58 15.58 4 20 4C24.42 4 28 7.58 28 12V16" stroke="url(#s2)" stroke-width="2" fill="none"/>
+              <circle cx="20" cy="26" r="3" fill="url(#s2)"/>
+              <defs>
+                <linearGradient id="s2" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>IT Infra &amp; Cloud Solutions</h3>
+          <p>Modernize and migrate your infrastructure to scalable cloud environments. From hybrid architectures to full cloud-native deployments with built-in resilience.</p>
+          <ul class="service-tags">
+            <li>AWS</li><li>Azure</li><li>GCP</li><li>Kubernetes</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-index="2">
+          <div class="card-glow"></div>
+          <div class="service-icon">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+              <path d="M8 8H24L32 16V32H8V8Z" stroke="url(#s3)" stroke-width="2" fill="none"/>
+              <path d="M24 8V16H32" stroke="url(#s3)" stroke-width="2"/>
+              <path d="M14 22H26M14 27H22" stroke="url(#s3)" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="s3" x1="8" y1="8" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>Software Development</h3>
+          <p>Custom software crafted for performance and scale — from APIs and microservices to intelligent automation platforms that streamline your business operations.</p>
+          <ul class="service-tags">
+            <li>APIs</li><li>Microservices</li><li>Automation</li><li>DevOps</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-index="3">
+          <div class="card-glow"></div>
+          <div class="service-icon">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="14" r="6" stroke="url(#s4)" stroke-width="2" fill="none"/>
+              <path d="M8 34C8 27.37 13.37 22 20 22C26.63 22 32 27.37 32 34" stroke="url(#s4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M28 8L36 4M28 20L36 24" stroke="url(#s4)" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="s4" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>Technology Consulting</h3>
+          <p>Strategic technology advisory that aligns your IT roadmap with business goals — from digital transformation strategy to vendor selection and architecture review.</p>
+          <ul class="service-tags">
+            <li>Strategy</li><li>Architecture</li><li>Roadmap</li><li>Advisory</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#fLogo)"/>
+                <defs><linearGradient id="fLogo" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse"><stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/></linearGradient></defs>
+              </svg>
+            </span>
+            <div class="logo-text-wrap">
+              <span class="logo-name">Avion<span class="logo-accent">Pure</span></span>
+              <span class="logo-tagline">Transforming Innovation</span>
+            </div>
+          </a>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html">Security &amp; Observability</a></li>
+            <li><a href="services.html">IT Infra &amp; Cloud</a></li>
+            <li><a href="services.html">Software Development</a></li>
+            <li><a href="services.html">Technology Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#careers">Careers</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:ask@avionpure.com">ask@avionpure.com</a></li>
+            <li>Omaha, NE. USA</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AvionPure. All rights reserved.</span>
+        <span>Transforming Innovation</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

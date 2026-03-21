@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" width="660" height="160">
+  <defs>
+    <!-- Exact same gradient direction as the website nav logo -->
+    <linearGradient id="logoGrad" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0095bb"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <!-- Subtle background glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#eef3ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="660" height="160" fill="#ffffff" rx="16"/>
+  <ellipse cx="330" cy="80" rx="300" ry="72" fill="url(#bgGlow)"/>
+
+  <!-- Subtle dot particles -->
+  <g opacity="0.16" fill="#6d28d9">
+    <circle cx="22"  cy="22"  r="3.5"/>
+    <circle cx="52"  cy="12"  r="2"/>
+    <circle cx="14"  cy="55"  r="2.5"/>
+    <circle cx="630" cy="18"  r="3"/>
+    <circle cx="648" cy="55"  r="2"/>
+    <circle cx="618" cy="72"  r="2.5"/>
+    <circle cx="18"  cy="138" r="2.5"/>
+    <circle cx="48"  cy="150" r="2"/>
+    <circle cx="640" cy="140" r="2.5"/>
+    <circle cx="620" cy="152" r="2"/>
+    <circle cx="180" cy="148" r="1.8"/>
+    <circle cx="500" cy="14"  r="1.8"/>
+  </g>
+
+  <!--
+    LOGO MARK — uses the exact same path as the website nav:
+      M4 28 L16 4 L28 28 H20 L16 20 L12 28 H4 Z  (32×32 viewBox)
+    Content occupies x:[4..28], y:[4..28] — 24×24 units.
+    Target height ≈ 72px → scale = 72/24 = 3.
+    To place content starting at (28, 44):
+      translate_x = 28 − 4×3 = 16
+      translate_y = 44 − 4×3 = 32
+    Content right edge = 16 + 28×3 = 100 → text starts at 100+22 = 122
+  -->
+  <g transform="translate(16, 32) scale(3)">
+    <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#logoGrad)"/>
+  </g>
+
+  <!--
+    TEXT BLOCK — vertically centered in 160px canvas.
+    "AvionPure" cap-top ≈ y=43, tagline descender bottom ≈ y=118.
+    Block center ≈ 80 ✓
+  -->
+  <!-- "AvionPure" — Avion dark, Pure cyan -->
+  <text x="122" y="87"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="55"
+        font-weight="800"
+        letter-spacing="-0.5">
+    <tspan fill="#111827">Avion</tspan><tspan fill="#0095bb">Pure</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="123" y="116"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="21"
+        font-weight="500"
+        fill="#0095bb"
+        letter-spacing="0.3">Transforming Innovation</text>
+</svg>
