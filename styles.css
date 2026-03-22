@@ -465,7 +465,16 @@ section:nth-child(even) { background: var(--bg2); }
   color: var(--text);
 }
 .service-card p { color: var(--text2); font-size: 0.88rem; line-height: 1.65; margin-bottom: 18px; }
-.service-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 24px; }
+.know-more-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 700; color: var(--cyan);
+  transition: gap var(--transition), color var(--transition);
+  margin-top: auto;
+}
+.know-more-link:hover { gap: 10px; color: var(--purple); }
+.know-more-link svg { transition: transform var(--transition); }
+.know-more-link:hover svg { transform: translateX(3px); }
 .service-tags li {
   font-size: 0.7rem;
   font-weight: 600;

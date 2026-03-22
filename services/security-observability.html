@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security &amp; Observability — AvionPure</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .svc-page { background: var(--bg2); padding: 100px 24px 80px; min-height: 100vh; }
+    .svc-inner { max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--cyan); margin-bottom: 36px; transition: gap var(--transition); }
+    .back-link:hover { gap: 12px; }
+    .back-link svg { transform: rotate(180deg); }
+    .svc-hero { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; margin-bottom: 20px; display: flex; align-items: center; gap: 48px; overflow: hidden; }
+    .svc-hero-content { flex: 1; min-width: 0; }
+    .svc-hero-visual { flex: 0 0 200px; height: 200px; }
+    .svc-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--grad); color: white; padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .svc-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--text); margin-bottom: 20px; line-height: 1.1; }
+    .svc-hero .overview { font-size: 1rem; color: var(--text2); line-height: 1.85; }
+    .stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+    .stat-cell { padding: 28px 20px; text-align: center; border-right: 1px solid var(--border); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #0095bb, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; margin-bottom: 6px; }
+    .stat-label { font-size: 0.78rem; color: var(--text2); font-weight: 500; line-height: 1.4; }
+    .svc-block { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; margin-bottom: 20px; }
+    .svc-block h2 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; }
+    .capabilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .cap-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; }
+    .cap-icon { width: 28px; height: 28px; margin-bottom: 12px; display: block; color: var(--cyan); }
+    .cap-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .cap-card p { font-size: 0.85rem; color: var(--text2); line-height: 1.65; }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; color: var(--cyan); background: rgba(0,149,187,0.07); border: 1px solid rgba(0,149,187,0.2); padding: 7px 16px; border-radius: 100px; }
+    .usecases-list { display: flex; flex-direction: column; gap: 12px; }
+    .usecase-item { display: flex; align-items: flex-start; gap: 14px; font-size: 0.93rem; color: var(--text2); line-height: 1.65; }
+    .usecase-item::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); margin-top: 8px; }
+    @media (max-width: 640px) {
+      .svc-hero { flex-direction: column; gap: 28px; padding: 32px 24px; }
+      .svc-hero-visual { display: none; }
+      .stats-strip { grid-template-columns: 1fr; }
+      .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-cell:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M4 28L16 4L28 28H20L16 20L12 28H4Z" fill="url(#logoGrad)"/>
+            <defs><linearGradient id="logoGrad" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse"><stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/></linearGradient></defs>
+          </svg>
+        </span>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Avion<span class="logo-accent">Pure</span></span>
+          <span class="logo-tagline">Transforming Innovation</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../services.html" style="color:var(--cyan);">Services</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../careers.html">Careers</a></li>
+        <li><a href="../index.html#contact" class="btn-nav">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../services.html">Services</a>
+      <a href="../about.html">About</a>
+      <a href="../careers.html">Careers</a>
+      <a href="../index.html#contact">Contact Us</a>
+    </div>
+  </nav>
+
+  <div class="svc-page">
+    <div class="svc-inner">
+      <a href="../services.html" class="back-link">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Back to Services
+      </a>
+
+      <!-- Hero -->
+      <div class="svc-hero">
+        <div class="svc-hero-content">
+          <div class="svc-badge">Security &amp; Observability</div>
+          <h1>End-to-End Security &amp;<br/>Full-Stack Observability</h1>
+          <p class="overview">AvionPure delivers comprehensive security operations and observability solutions that give your organization complete visibility into threats, performance, and system health. We architect, deploy, and optimize industry-leading platforms — transforming raw data into actionable intelligence that reduces risk, accelerates incident response, and drives confident decision-making across your enterprise.</p>
+        </div>
+        <div class="svc-hero-visual">
+          <svg viewBox="0 0 200 200" fill="none" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hg1" x1="20" y1="180" x2="180" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0095bb"/><stop offset="1" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="90" fill="rgba(0,149,187,0.04)" stroke="rgba(0,149,187,0.1)" stroke-width="1"/>
+            <path d="M100 22L158 46V94C158 130 133 158 100 172C67 158 42 130 42 94V46Z" stroke="url(#hg1)" stroke-width="2.5" fill="rgba(0,149,187,0.05)"/>
+            <circle cx="100" cy="100" r="32" stroke="url(#hg1)" stroke-width="1.5" fill="none" stroke-dasharray="6 4" opacity="0.45"/>
+            <circle cx="100" cy="100" r="54" stroke="url(#hg1)" stroke-width="1" fill="none" stroke-dasharray="4 5" opacity="0.2"/>
+            <path d="M84 100L95 113L118 87" stroke="url(#hg1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="154" cy="57" r="5.5" fill="#0095bb" opacity="0.5"/>
+            <line x1="154" y1="57" x2="145" y2="68" stroke="#0095bb" stroke-width="1.2" opacity="0.4"/>
+            <circle cx="49" cy="76" r="4" fill="#6d28d9" opacity="0.4"/>
+            <line x1="49" y1="76" x2="59" y2="85" stroke="#6d28d9" stroke-width="1" opacity="0.3"/>
+            <circle cx="158" cy="122" r="3.5" fill="#0095bb" opacity="0.35"/>
+            <line x1="100" y1="47" x2="100" y2="68" stroke="url(#hg1)" stroke-width="1" opacity="0.25"/>
+            <line x1="64" y1="100" x2="80" y2="100" stroke="url(#hg1)" stroke-width="1" opacity="0.25"/>
+            <line x1="120" y1="100" x2="136" y2="100" stroke="url(#hg1)" stroke-width="1" opacity="0.25"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-strip">
+        <div class="stat-cell">
+          <div class="stat-num">60%</div>
+          <div class="stat-label">log cost reduction via Cribl pipeline optimization</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">&lt;15 min</div>
+          <div class="stat-label">mean time to respond with SOAR automation</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">SIEM &amp; observability platforms supported</div>
+        </div>
+      </div>
+
+      <!-- Key Capabilities -->
+      <div class="svc-block">
+        <h2>Key Capabilities</h2>
+        <div class="capabilities-grid">
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="22" height="6" rx="1.5"/><rect x="3" y="13" width="22" height="6" rx="1.5"/>
+              <rect x="3" y="22" width="22" height="6" rx="1.5" opacity="0.5" stroke-dasharray="3 2"/>
+              <circle cx="22" cy="7" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <h4>SIEM Implementation</h4>
+            <p>Design and deploy enterprise-grade SIEM platforms with custom detection rules, correlation logic, and automated alerting tailored to your threat landscape.</p>
+          </div>
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="14" cy="14" r="10"/><circle cx="14" cy="14" r="5"/>
+              <circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+              <line x1="14" y1="1" x2="14" y2="4"/><line x1="14" y1="24" x2="14" y2="27"/>
+              <line x1="1" y1="14" x2="4" y2="14"/><line x1="24" y1="14" x2="27" y2="14"/>
+            </svg>
+            <h4>Threat Detection Engineering</h4>
+            <p>Build and tune detection content using MITRE ATT&amp;CK framework — from initial access to exfiltration — ensuring your SOC catches what matters.</p>
+          </div>
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M2 14C5 8 9 5 14 5C19 5 23 8 26 14C23 20 19 23 14 23C9 23 5 20 2 14Z"/>
+              <circle cx="14" cy="14" r="4"/><circle cx="14" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <h4>Full-Stack Observability</h4>
+            <p>Instrument applications and infrastructure with unified observability covering metrics, logs, traces, and events for real-time performance visibility.</p>
+          </div>
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6H24L16 15V23L12 25V15Z"/>
+              <line x1="4" y1="10" x2="24" y2="10" opacity="0.4"/>
+            </svg>
+            <h4>Data Pipeline Optimization</h4>
+            <p>Route, parse, filter, and enrich log data at scale using Cribl Stream — reducing ingestion costs while improving data quality and coverage.</p>
+          </div>
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 2L8 16H14L11 26L21 12H15Z" fill="rgba(0,149,187,0.08)"/>
+            </svg>
+            <h4>Incident Response Automation</h4>
+            <p>Integrate SOAR platforms to automate playbooks, accelerate triage, and dramatically reduce mean time to respond (MTTR) for security incidents.</p>
+          </div>
+          <div class="cap-card">
+            <svg class="cap-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M14 2L24 6.5V13C24 19.5 19.5 24.5 14 26.5C8.5 24.5 4 19.5 4 13V6.5Z"/>
+              <path d="M9 14L12 17L19 11"/>
+            </svg>
+            <h4>Compliance &amp; Reporting</h4>
+            <p>Build dashboards and automated reports aligned to SOC 2, PCI-DSS, HIPAA, and NIST to support audit readiness and regulatory compliance.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <span>&copy; 2026 AvionPure. All rights reserved.</span>
+        <span>Transforming Innovation</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
