@@ -439,10 +439,23 @@
         btn.disabled = true;
         btn.textContent = 'Submitting…';
 
-        setTimeout(() => {
+        const formData = new FormData(this);
+        formData.append('_subject', `Job Application: ${job.title} — AvionPure`);
+        formData.append('_captcha', 'false');
+
+        fetch('https://formsubmit.co/ajax/submissions@avionpure.com', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => {
           this.style.display = 'none';
           document.getElementById('applySuccess').classList.add('show');
-        }, 1200);
+        })
+        .catch(() => {
+          btn.disabled = false;
+          btn.textContent = 'Submit Application';
+        });
       });
     }
 

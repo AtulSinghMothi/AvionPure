@@ -149,12 +149,29 @@ form.addEventListener('submit', function (e) {
   btn.disabled = true;
   btn.querySelector('.btn-text').textContent = 'Sending…';
 
-  // Simulate async submission
-  setTimeout(() => {
+  const topic = form.querySelector('#subject').value;
+  const emailSubject = topic
+    ? `Contact Form: ${topic} — AvionPure`
+    : 'Contact Form Submission — AvionPure';
+
+  const formData = new FormData(form);
+  formData.append('_subject', emailSubject);
+  formData.append('_captcha', 'false');
+
+  fetch('https://formsubmit.co/ajax/submissions@avionpure.com', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(() => {
     btn.style.display = 'none';
     successMsg.classList.add('show');
     form.reset();
-  }, 1200);
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.querySelector('.btn-text').textContent = 'Send Message';
+  });
 });
 
 function shakeForm() {
